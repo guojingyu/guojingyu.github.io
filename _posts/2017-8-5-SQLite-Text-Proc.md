@@ -132,13 +132,13 @@ Before any proper query planning, disappointingly, it took ~10s for the database
 
 Relational database index is commonly indexed as a derivative tree structure (e.g. B-tree). This would reduce linear search by row or column to binary search by index (logarithmic time). The better part is to make multiple column index so that queries over multiple columns can be done by searching single index. To create index, insert a query like this after a table is loaded before the connector is closed.
 
-```
+```python
 connector.SQLRunner.runSQL(sqlite_db, "CREATE INDEX did_refseq_id_idx ON %s (id, refseq_id)" % table_name)
 ```
 
 Then query it on the table still:
 
-```
+```python
 cur.execute("SELECT gene_symbol, refseq_id FROM %s WHERE id = '%s' AND refseq_id > 'NO' AND refseq_id < 'NQ'" % (table_name, id))
 ```
 
