@@ -5,7 +5,7 @@ title: Use SQLite in Text-Data Processing
 
 In a recent testing development project, I need to generate genetic variant test cases for downstream automated software test. So the test cases will likely be assembled by variants enlisted in VCF files and their corresponding clinical findings (e.g. disease, genotype, treatment, clinical observation etc). The challenge is for the clinical findings that has underspecified mutations, such as EGFR activating mutations or exon 19 deletion, there is no particular well defined single variant associated that I can use to insert into VCFs. This will have to be done through sampling a whole set of variants with criteria and/or formulate it through gene elements descriptive information.
 
-Well now, good news is that I digged out from the knowledge base a pretty comprehensive list (as a dump) of known/putative variants with many of them curation validated, bad news is that this list contains >20 million variants, added up to a 2GB flat file with some simple annotation and it is ever-growing. It became rather a problem to solve with script only -- to simply read this file to memory will be a slow process. But what makes this unmanageable is the much larger memory footage and computation cost to build the data structure (hash or dictionary) for this file in memory and to merge it with other file content. The whole process, shall implemented purely by scripting language, while quite possible, can be fragile -- anything happened (all data files to be joined could change) could disrupt the whole process and risk longer running time but to restart. A more persistent solution is required and it’d better be light.
+Well now, good news is that I digged out from Qiagen Ingenuity knowledge base a pretty comprehensive list (as a dump) of known/putative variants with many of them curation validated, bad news is that this list contains >20 million variants, added up to a 2GB flat file with some simple annotation and it is ever-growing. For public, it is OK to use any kind of such variant mapping data repositories such as [dbVar](https://www.ncbi.nlm.nih.gov/dbvar) and [COSMIC](cancer.sanger.ac.uk/). It became rather a problem to solve with script only -- to simply read this file to memory will be a slow process. But what makes this unmanageable is the much larger memory footage and computation cost to build the data structure (hash or dictionary) for this file in memory and to merge it with other file content. The whole process, shall implemented purely by scripting language, while quite possible, can be fragile -- anything happened (all data files to be joined could change) could disrupt the whole process and risk longer running time but to restart. A more persistent solution is required and it’d better be light.
 
 Another requirement to this task is that it will remain as part of the build process for content release from knowledge base and I have to be able to build it as part of a CI process, which is to be triggered by upstream jobs and executable as a script. Since being part of the content build, even on server, this is not supposed to be a memory demanding task or it prevents other jobs from finishing in daily build. 
 
@@ -132,13 +132,13 @@ Before any proper query planning, disappointingly, it took ~10s for the database
 
 Relational database index is commonly indexed as a derivative tree structure (e.g. B-tree). This would reduce linear search by row or column to binary search by index (logarithmic time). The better part is to make multiple column index so that queries over multiple columns can be done by searching single index. To create index, insert a query like this after a table is loaded before the connector is closed.
 
-```SQL
+```
 connector.SQLRunner.runSQL(sqlite_db, "CREATE INDEX did_refseq_id_idx ON %s (id, refseq_id)" % table_name)
 ```
 
 Then query it on the table still:
 
-```SQL
+```
 cur.execute("SELECT gene_symbol, refseq_id FROM %s WHERE id = '%s' AND refseq_id > 'NO' AND refseq_id < 'NQ'" % (table_name, id))
 ```
 
