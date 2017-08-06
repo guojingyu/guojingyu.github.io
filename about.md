@@ -4,12 +4,11 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+My name is Jingyu Guo. I am a full time professional working in biotech in San Francisco Bay Area.
 
-### More Information
+I worked on translational studies with yeast cell model at University of Alabama at Birmingham. Thus naturally I enjoy beer.
 
-A place to include any other types of information that you'd like to include about yourself.
+I am working in medical genetics and bioinformatics. I am also working on machine learning. Therefore natually I enjoy coding and understanding from data.
 
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+My passion lies in the interdisciplinary fields of biology and computer sciences. I'm available for exciting opportunies working with people who share the same passion.
+					
