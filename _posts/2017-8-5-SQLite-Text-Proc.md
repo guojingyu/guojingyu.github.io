@@ -79,7 +79,7 @@ for chunk in pd.read_table(file, header=0, chunksize=chunksize):
 
 Each chunk can be just treated as a “mini” dataframe of the original file. So most Pandas dataframe functions or series functions can work directly on chunk object or its column trouble free.
 
-Just a side note, for text processing, Pandas Dataframe is very handy. Pandas is implemented with C . But for numeric computing, Pandas Dataframe may not be a good choice. What fits better for matrix-like numeric computing is numpy ndarray -- personal experience suggested up to 100 times faster in these applications.
+Just a side note, for text processing, Pandas Dataframe is very handy. But for numeric computing, Pandas Dataframe may not be a good choice. What fits better for matrix-like numeric computing is numpy ndarray -- personal experience suggested up to 100 times faster in these applications.
 
 ### Loading to SQLite
 Another reason to choose Pandas Dataframe is that it has build-in connection operators for database. While plain python can do it easily, such as
