@@ -11,7 +11,7 @@ Another requirement to this task is that it will remain as part of the build pro
 
 So I eventually decided to alternatively serve this file from drive along with others. To be able to do so, I utilized SQLite as the persistent layer to serve all files for the manipulation in python. During the run, it turned out to be efficient with up to ~200M memory footage that was quite manageable even on my Macbook Pro and most of the process remained low computation demanding.
 
-###SQLite
+### SQLite
 A well known name for desktop relational database is SQLite. SQLite runs its databases as files -- meaning the databases can be create, write, and erased as files. But with index properly built, the query performance on single machine is a well match to MySQL. Actually, there is not much need to introduce this tool. SQLite acts a bit like a shell above the database file, or software runs on the file, rather than a server or service.
 
 Install SQLite on Mac with Homebrew is a breeze. 
@@ -48,13 +48,13 @@ To quit the shell, do
 sqlite> .exit
 ```
 
-###SQLite Manager Add-on for Firefox
+### SQLite Manager Add-on for Firefox
 If to use Firefox browser, there is a very nice little add-on tool named “SQLite Manager” (https://github.com/lazierthanthou/sqlite-manager) can be installed as its add on. It is not necessary for the task but it helps to visualize the databases and test SQL queries. This tool can be installed within Firefox.
 
 ![_config.yml]({{ site.baseurl }}/images/2017-8-5-SQLite-Text-Proc/SQLite _Manager.jpg)
 
 
-###Load file content into Pandas Dataframe
+### Load file content into Pandas Dataframe
 I normally used the Anaconda build for Python and it had pandas included. There is no need to talk much about Pandas either (too much introduction online). Taking the idea from R, pandas is one great dataframe implementation for table-like data processing. 
 
 Loading data to a pandas dataframe from a flat file is a no brainer (just like R):
@@ -81,7 +81,7 @@ Each chunk can be just treated as a “mini” dataframe of the original file. S
 
 Just a side note, for text processing, Pandas Dataframe is very handy. Pandas is implemented with C . But for numeric computing, Pandas Dataframe may not be a good choice. What fits better for matrix-like numeric computing is numpy ndarray -- personal experience suggested up to 100 times faster in these applications.
 
-###Loading to SQLite
+### Loading to SQLite
 Another reason to choose Pandas Dataframe is that it has build-in connection operators for database. While plain python can do it easily, such as
 
 ```python
@@ -127,7 +127,7 @@ df.to_sql(table, conn, flavor='sqlite', if_exists = 'append', index = index)
 
 I tried to load freshly for each table so I will “replace” existing table by the first chunk and “append” by the following chunks.
 
-###Query Planning (Optimization)
+### Query Planning (Optimization)
 Before any proper query planning, disappointingly, it took ~10s for the database to return the result for one single variant lookup, which is comprised of 3 separate SQL queries. But the point for using a database is we can make plan for how to query the tables so to speed up. One way to do it is to indexing tables -- just like to create an index for a book or dictionary. 
 
 Relational database index is commonly indexed as a derivative tree structure (e.g. B-tree). This would reduce linear search by row or column to binary search by index (logarithmic time). The better part is to make multiple column index so that queries over multiple columns can be done by searching single index. To create index, insert a query like this after a table is loaded before the connector is closed.
@@ -150,12 +150,12 @@ Create/query the index can be a bit tricky here:
 
 After indexed the tables and optimized the SQL queries, the same single variant lookup with three SQL queries can be returned in <0.005 s on my 2-year-old laptop. So it takes ~10 seconds to finish more than 1000 variant lookup sessions, which would otherwise use more than 3 hours. 
 
-###Wrap up the project and retro
+### Wrap up the project and retro
 At last, docker helped to simplified the deployment (again), since the whole job can be run on a single docker container with python (pandas lib etc) and SQLite database pre-installed in the image. The to-be-imported datafile will be first exported from knowledge base or other sources to a folder that is mounted and readable to the virtual machine/docker container. Dockerizing this project is similar to the manual process to build the NGS pipeline with docker (so not an explicit point by this article).
 
 The overall process can be done by ~10 minutes for data parsing and uploading ~2.5GB data files, and ~2 minutes for queries, with ~10K test cases (writing to VCFs etc) -- well, besides whatever upstream knowledge base query time and the docker initialization.
 
-####Some retro here:
+#### Some retro here:
 I did not normalize the tables within the database -- for such a project with several tables involved, such normalization may not help as much on the query performance. Also because hard drive is much cheaper to use, so serving a project that is very single purposed, normalization over 10 tables to prevent redundancy does not seem to be a time-wise worthy move. 
 There can be some QC work and constraints to add to make the process more robust and reduce the data error -- but this can be incrementally added when the whole setup is stabilized.
 SQLite seems to be quite handy and lightweight. I like its fitness for research/preliminary level projects, where no absolute performance but flexibility is needed. This project can be run at full just on my laptop computer and yet even with a 20GB file, it can still be manageable (longer loading overhead but only slightly slower queries given logarithmic complexity).
