@@ -46,7 +46,7 @@ http://deeplearning.net/software/theano/tutorial/using_gpu.html#testing-theano-w
 I used two ways to transfer files between the desktop server and my laptop -- 1. SCP command for single file for convenience, as well for big files (e.g. data) for speed (through a Gigabyte home network) ; 2. Use github to sync the code repositories. 
 
 ### So How Faster It Can Be
-I will demo this with a Pytorch implementation of LeNet over MNIST dataset. To define the network model is super easy as below.
+I will demo this with a dirty Pytorch implementation of LeNet over MNIST dataset. To define the network model is super easy as below.
 
 ```
 class Lenet(nn.Module):
@@ -156,7 +156,7 @@ than a CPU to train a DL model:
    
 ![AMD CPU](../images/2017-12-22-Build_DL_Box/Athlon_performance_LeNet_MNIST.png)
 
-Of course, it is not quite fair to compare a 4-year-old AMD Athlon processor to a much newer GPU hardware. But even with a much faster 2-year-old 2.2G i7 processor on my laptop, the GTX960 is still clearly the winner by ~3 times.
+Of course, it is not quite fair to compare a 4-year-old AMD Athlon processor to a much newer piece of GPU hardware. But even comparing with a much faster 2-year-old 2.2G i7 CPU on my laptop, the GTX960 is still clearly the winner by ~3 times.
 
 ![i7 CPU](../images/2017-12-22-Build_DL_Box/i7_performance_LeNet_MNIST.png)
 
