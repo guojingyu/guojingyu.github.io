@@ -48,7 +48,7 @@ I used two ways to transfer files between the desktop server and my laptop -- 1.
 ### So How Faster It Can Be
 I will demo this with a Pytorch implementation of LeNet over MNIST dataset. To define the network model is super easy as below.
 
-```python
+```
 class Lenet(nn.Module):
     def __init__(self):
         super(Lenet, self).__init__()
@@ -75,7 +75,7 @@ class Lenet(nn.Module):
 
 Then throw in a training method to include both forward and backward passing:
 
-```python
+```
 def train(criterion = nn.CrossEntropyLoss(size_average=False),
                 use_gpu = False):
     lenet = Lenet()
@@ -121,7 +121,7 @@ Then the predict function can be similarly defined as above but only keep the fo
 
 Finally, to prepare and load the [MNIST](http://yann.lecun.com/exdb/mnist/) data and other hyperparameter definition including batch size and learning rate.
 
-```python
+```
 trans_img = transforms.Compose([
         transforms.ToTensor()
     ])
@@ -133,7 +133,7 @@ trainloader = DataLoader(trainset, batch_size=batch_size, shuffle=True, num_work
 testloader = DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=4)
 ```
 
-```python
+```
 learning_rate = 1e-3
 batch_size = 100
 epoches = 50
