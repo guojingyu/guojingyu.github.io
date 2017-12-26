@@ -58,8 +58,10 @@ class Lenet(nn.Module):
         # use AvgPool2d(2, 2)
         self.conv = nn.Sequential(
             nn.Conv2d(1, 6, 3, stride=1, padding=1),
+            nn.Tanh(),
             nn.MaxPool2d(2, 2),
             nn.Conv2d(6, 16, 5, stride=1, padding=0),
+            nn.Tanh(),
             nn.MaxPool2d(2, 2)
         )
 
