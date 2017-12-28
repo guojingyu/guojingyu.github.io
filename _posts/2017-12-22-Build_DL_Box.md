@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Home Brew Deep Learning in A Budget
+title: Home Brew Deep Learning on A Budget
 ---
 
 ### Need For Speed
