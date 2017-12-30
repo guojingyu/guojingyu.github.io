@@ -48,7 +48,7 @@ Still, rooted with computer sciences, statistics and mathematics, machine learni
 2. Xiong H.Y., Alipanahi B., Lee L.J., Bretschneider H., Merico D., Yuen R.K., Hua Y., Gueroussov S., Najafabadi H.S., Hughes T.R., Morris Q., Barash Y., Krainer A.R., Jojic N., Scherer S.W., Blencowe B.J., Frey B.J. (2015) *The Human Splicing Code Reveals New Insights into the Genetic Determinants of Disease.* Science. 347.6218 : 1254806.
 3. Asgari, E., Mofrad, M.R.K. (2015) *Continuous distributed representation of biological sequences for deep proteomics and genomics.* PLoS One. 10(11): e0141287. doi:10.1371/journal.pone.0141287.
 4. Poplin R., Newburger D., Dijamco J., Nguyen N., Loy D., Gross S.S., McLean, C.Y., DePristo, M.A. (2016) *Creating a universal SNP and small indel variant caller with deep neural networks.* bioRxiv 092890. doi: https://doi.org/10.1101/092890
-5. He, K., Zhang, X., Ren, S., Sun, J (2015) *Deep Residual Learning for Image Recognition. Computer Vision and Pattern Recognition.* arXiv:1512.03385
+5. He K., Zhang X., Ren S., Sun J (2015) *Deep Residual Learning for Image Recognition. Computer Vision and Pattern Recognition.* arXiv:1512.03385
 6. Krizhevsky A., Sutskever I., Hinton G.E. (2012) *Imagenet classification with deep convolutional neural networks.* Advances in neural information processing systems, 1097-1105.
 7. Karpathy, A., Li, F. (2015) *Deep visual-semantic alignments for generating image descriptions.* Computer Vision and Pattern Recognition. arXiv:1412.2306v2.
 8. Wolpert, D.H., Macready, W.G. (1997) *No Free Lunch Theorems for Optimization*, IEEE Transactions on Evolutionary Computation. 1, 67.
