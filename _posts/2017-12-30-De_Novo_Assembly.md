@@ -3,7 +3,7 @@ layout: post
 title: DNA De Novo Assembly With de Bruijn Graph and Euler Walk
 ---
 
-"... Euler walks through the graph and try to pass through every edge, and when he is stuck, restart on an explored node with unexplored edges and follow the unexplored edges (repeat the explored edges first if needed) ... until there is no more unexplored edges" [1]
+... Euler walks through the graph and try to pass through every edge, and when he gets stuck, restarts on an explored node with unexplored edges and follows the unexplored edges ... until there is no more unexplored edges ... [1]
 
 ### tl;dr
 
