@@ -93,10 +93,10 @@ class DeBruijnGraph():
 
 The build_DBG is the key method to create the de Bruijn graph. The steps can be described as:
         
-1. if a l node (k-1 prefix of k-mer) is in G, don't add it but get the node instead for later;
+1. if a left node (k-1 prefix of k-mer) is in G, don't add it but get the node instead for later;
 2. if not, create the node, but also get the node for later;
-3. repeat above for the r node (k-1 suffix of k-mer)
-4. Add an edge with both l and r node
+3. repeat above for the right node (k-1 suffix of k-mer);
+4. Add an edge with both left and right node.
 
 Please notice that two attributes start and end, are appended to each node added to the graph -- these are to track the beginning and end of any Euler path if exists. 
 
@@ -185,7 +185,7 @@ def has_euler_path(graph):
 If the option 2 or 3 is performed, the process would be as below:
 1. There exists Euler circuit in the subgraph, if there is no odd degree node. In this case, start with any node;
 2. There exists Euler path in the subgraph, if there are 2 odd vertices. In this case, start with the node containing one extra out degree;
-3. Explore edges one at a time. If facing a choice between a bridge and a non-bridge, always choose the non-bridge.
+3. Explore edges one at a time. If facing a choice between a bridge and a non-bridge, always choose the non-bridge;
 4. Stop when no unexplored edge in the graph (subgraph). This is done utilizing a stack to track the exploration 'frontier' (similar to Breath First Search) of nodes from the given start node until it is empty.
 
 This method has an O(V + E) complexity -- assuming by average each node has m in degrees and m out degrees, thus the algorithm will access m times of each node (m*V) to traverse all edges E.
