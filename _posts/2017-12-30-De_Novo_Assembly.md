@@ -185,7 +185,7 @@ def has_euler_path(graph):
 
 If the option 2 or 3 is performed, the process would be as below:
 1. There exists Euler circuit in the subgraph, if there is no odd degree node. In this case, start with any node;
-2. There exists Euler path in the subgraph, if there are 2 odd vertices. In this case, start with the node containing one extra out degree;
+2. There exists Euler path in the subgraph, if there are 2 odd degree vertices. In this case, start with the node containing one extra out degree;
 3. Explore edges one at a time. If facing a choice between a bridge and a non-bridge, always choose the non-bridge;
 4. Stop when no unexplored edge in the graph (subgraph). This is done utilizing a stack to track the exploration 'frontier' (similar to Breath First Search) of nodes from the given start node until it is empty.
 
