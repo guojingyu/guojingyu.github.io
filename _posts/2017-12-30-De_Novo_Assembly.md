@@ -188,7 +188,7 @@ If the option 2 or 3 is performed, the process would be as below:
 3. Explore edges one at a time. If facing a choice between a bridge and a non-bridge, always choose the non-bridge.
 4. Stop when no unexplored edge in the graph (subgraph). This is done utilizing a stack to track the exploration 'frontier' (similar to Breath First Search) of nodes from the given start node until it is empty.
 
-This method has an $O(|V| + |E|)$ complexity -- assuming by average each node has $m$ in degrees and m out degrees, thus the algorithm will access m times of each node ($m|V|$) to traverse all edges $|E|$.
+This method has an O(V + E) complexity -- assuming by average each node has $m$ in degrees and m out degrees, thus the algorithm will access m times of each node (m|V|) to traverse all edges E.
 
 
 ```python
@@ -244,6 +244,8 @@ For the provided [50 fasta sample file](https://github.com/guojingyu/DeNovoAssem
 It is also noticeable, for the provided 50 fasta sample file, that the running time increased when k is getting larger. This holds true at least when k is still relatively small (20-30) than the ~1000 length of the fasta records. It may take ~2 minute to finish if k=20, and similarly or slightly longer to finish at 30, as running as a single threaded on a normal laptop with a 2-year-old i7 processor.
 
 As you can see, it is expected that the right parameter k for a particular task can take some experiment to find out although some empirical knowledge may help. Due to above mentioned potential gaps in the input DNA sequences, for a single run of the algorithm, picking a larger k will generally help to acquire higher quality sequences. However, too large of a k may lead to unnecessary isolated subgraphs. 
+
+Another thing that is worthy mentioning is that tandom repeating sequences without any library sequences containing both non-repeating 'anchoring' flankings, can be a problem for this approach in assembling DNA. The problem is that it is hard to determine how many  copies of the repeats are there.
 
 ### References
 1. Phillip E C Compeau, Pavel A Pevzner, Glenn Tesler. How to apply de Bruijn graphs to genome assembly. Nature Biotechnology 29, 987–991 (2011) doi:10.1038/nbt.2023
