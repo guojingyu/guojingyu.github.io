@@ -245,7 +245,7 @@ It is also noticeable, for the provided 50 fasta sample file, that the running t
 
 As you can see, it is expected that the right parameter k for a particular task can take some experiment to find out although some empirical knowledge may help. Due to above mentioned potential gaps in the input DNA sequences, for a single run of the algorithm, picking a larger k will generally help to acquire higher quality sequences. However, too large of a k may lead to unnecessary isolated subgraphs. 
 
-Another thing that is worthy mentioning is that tandom repeating sequences without any library sequences containing both non-repeating 'anchoring' flankings, can be a problem for this approach in assembling DNA. The problem is that it is hard to determine how many  copies of the repeats are there.
+Another thing that is worthy mentioning is that tandom repeating sequences without any library sequences containing both non-repeating 'anchoring' flankings, can be a problem for this approach in assembling DNA. It is hard to determine how many copies of the repeats are there.
 
 ### References
 1. Phillip E C Compeau, Pavel A Pevzner, Glenn Tesler. How to apply de Bruijn graphs to genome assembly. Nature Biotechnology 29, 987–991 (2011) doi:10.1038/nbt.2023
