@@ -234,7 +234,7 @@ Also there are some assumptions made to simplify the situation:
 4. The k of k-mer should not be longer than the minimum length of given sequences but larger than 2.
 
 
-### Results
+### Conclusion
 For the [dummy_data.fasta](https://github.com/guojingyu/DeNovoAssembly/blob/master/data/dummy_data.fasta) file, [a 19 bp long DNA assembly](https://github.com/guojingyu/DeNovoAssembly/blob/master/output/dummy_data_assembly_output.txt) can be found with a k > 5, as *ATTAGACCTGCCGGAATAC*.
 
 ![Image](../images/2017-12-30-De_Novo_Assembly/dummy_data_de_bruijn.png)
