@@ -4,6 +4,9 @@ title: DNA De Novo Assembly With de Bruijn Graph and Euler Walk
 ---
 
 ### tl;dr
+
+*... Euler walks through the graph and try to pass through every edge, and when he is stuck, restart on an explored node with unexplored edges and follow the unexplored edges (repeat the explored edges first if needed) ... until there is no more unexplored edges.*
+
 DNA De Novo Assembly is a problem that can be resolved by finding a Euler path in a [de Bruijn graph](https://en.wikipedia.org/wiki/De_Bruijn_graph) with each edge representing a set of short sequences of DNA. An implementation of de Bruijn Graph based DNA De Novo Assembly method is as [here](https://github.com/guojingyu/DeNovoAssembly). 
 
 ### Background
@@ -128,8 +131,6 @@ def build_DBG(self):
 ```
 
 ### Euler Walk
-
-*... Euler walks through the graph and try to pass through every edge, and when he is stuck, restart on an explored node with unexplored edges and follow the unexplored edges (repeat the explored edges first if needed) ... until there is no more unexplored edges.*
 
 For a graph, Eulerian feature is true if and only if the in degree and out degree of each nodes in the graph is equal. When such criteria is satisified, there exists (at least) one circuit in the graph that pass through each and every edge only once. This provides us a manner to build a circular sequence from the edges (or the nodes) in the order of traverse. However, it is quite common that in a de Bruijn graph, one node could have one extra out degree and another could have one extra in degree, while the rest nodes remains equal of in and out degree. These two unbalanced nodes may represents a start and an end for a Eulerian path, which would be, in this exercise, a linear DNA sequence.
 
