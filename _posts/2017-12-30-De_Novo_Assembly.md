@@ -3,7 +3,7 @@ layout: post
 title: DNA De Novo Assembly With de Bruijn Graph and Euler Walk
 ---
 
-*2018-01-29 Updates: it is important but missed in the original post that the choice of k in the kmer should be a positive odd integer. The even integer may not be used to avoid producing reverse complementary sequence exactly the same as the original kmer, which will fold back the eulerian path to the kmer itself in the de Bruijn graph assembly. For example, 'GCGC' will have the same 'GCGC' as reverse complementary sequence. An odd kmer cannot be aligned with its own reverse complementary sequence [5,6].*
+*01-29-2018 Updates: it is important but missed in the original post that the choice of k in the kmer should be a positive odd integer. The even integer may not be used to avoid producing reverse complementary sequence exactly the same as the original kmer, which will fold back the eulerian path to the kmer itself in the de Bruijn graph assembly. For example, 'GCGC' will have the same 'GCGC' as reverse complementary sequence. An odd kmer cannot be aligned with its own reverse complementary sequence [5,6].*
    
     
    
@@ -240,13 +240,13 @@ Also there are some assumptions made to simplify the situation:
 
 
 ### Conclusion
-For the [dummy_data.fasta](https://github.com/guojingyu/DeNovoAssembly/blob/master/data/dummy_data.fasta) file, [a 19 bp long DNA assembly](https://github.com/guojingyu/DeNovoAssembly/blob/master/output/dummy_data_assembly_output.txt) can be found with a k > 5, as *ATTAGACCTGCCGGAATAC*.
+For the [dummy_data.fasta](https://github.com/guojingyu/DeNovoAssembly/blob/master/data/dummy_data.fasta) file, [a 19 bp long DNA assembly](https://github.com/guojingyu/DeNovoAssembly/blob/master/output/dummy_data_assembly_output.txt) can be found with a k >= 5, as *ATTAGACCTGCCGGAATAC*.
 
 ![Image](../images/2017-12-30-De_Novo_Assembly/dummy_data_de_bruijn.png)
 
-For the provided [50 fasta sample file](https://github.com/guojingyu/DeNovoAssembly/blob/master/data/coding_challenge_data_set.fasta), when k is set to 12-15, the output assembled DNA sequence has closely ranged around 20000 bp long but not unique. When the k is set to larger than 20, it would be stablized to a sequence of 19914 bp long.
+For the provided [50 fasta sample file](https://github.com/guojingyu/DeNovoAssembly/blob/master/data/coding_challenge_data_set.fasta), when k is set to 13-15, the output assembled DNA sequence has closely ranged around 20000 bp long but not unique. When the k is set to larger than 20, it would be stablized to a sequence of 19914 bp long.
 
-It is also noticeable, for the provided 50 fasta sample file, that the running time increased when k is getting larger. This holds true at least when k is still relatively small (20-30) than the ~1000 length of the fasta records. It may take ~2 minute to finish if k=20, and similarly or slightly longer to finish at 30, as running as a single threaded on a normal laptop with a 2-year-old i7 processor.
+It is also noticeable, for the provided 50 fasta sample file, that the running time increased when k is getting larger. This holds true at least when k is still relatively small (20-30) than the ~1000 length of the fasta records. It may take ~2 minute to finish if k=21, and similarly or slightly longer to finish at 30, as running as a single threaded on a normal laptop with a 2-year-old i7 processor.
 
 As you can see, it is expected that the right parameter k for a particular task can take some experiment to find out although some empirical knowledge may help. Due to above mentioned potential gaps in the input DNA sequences, for a single run of the algorithm, picking a larger k will generally help to acquire higher quality sequences. However, too large of a k may lead to unnecessary isolated subgraphs. 
 
