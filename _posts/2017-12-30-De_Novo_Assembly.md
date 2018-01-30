@@ -3,6 +3,10 @@ layout: post
 title: DNA De Novo Assembly With de Bruijn Graph and Euler Walk
 ---
 
+*2018-01-29 Updates: it is important but missed in the original post that the choice of k in the kmer should be a positive odd integer. The even integer may not be used to avoid producing reverse complementary sequence exactly the same as the original kmer, which will fold back the eulerian path to the kmer itself in the de Bruijn graph assembly. For example, 'GCGC' will have the same 'GCGC' as reverse complementary sequence. An odd kmer cannot be aligned with its own reverse complementary sequence [5,6].*
+   
+    
+   
 ... Euler walks through the graph and try to pass through every edge, and when he gets stuck, restarts on an explored node with unexplored edges and follows the unexplored edges ... until there is no more unexplored edges ... [1]
 
 ### tl;dr
@@ -253,4 +257,5 @@ Another thing that is worthy mentioning is that tandom repeating sequences witho
 2. Zhenyu Li, Yanxiang Chen, Desheng Mu, Jianying Yuan, Yujian Shi, Hao Zhang, Jun Gan, Nan Li, Xuesong Hu, Binghang Liu, Bicheng Yang, and Wei Fan. Comparison of the two major classes of assembly algorithms: overlap–layout–consensus and de-bruijn-graph. Briefings in Functional Genomics. 2011 doi:10.1093/bfgp/elr035
 3. https://www.coursera.org/learn/genome-sequencing/home/ (UCSD coursera Bioinformatics course)
 4. I also found this site for a great more detailed explanation about [de Bruijn based method](http://www.homolog.us/Tutorials/index.php?p=1.1&s=1) during drafting this post.
-
+5. Miller, Jason R., Sergey Koren, and Granger Sutton. “Assembly Algorithms for Next-Generation Sequencing Data.” Genomics 95.6 (2010): 315–327. PMC. Web. 30 Jan. 2018.
+6. Zerbino, Daniel R., and Ewan Birney. “Velvet: Algorithms for de Novo Short Read Assembly Using de Bruijn Graphs.” Genome Research 18.5 (2008): 821–829. PMC. Web. 30 Jan. 2018.
