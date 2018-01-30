@@ -3,7 +3,7 @@ layout: post
 title: DNA De Novo Assembly With de Bruijn Graph and Euler Walk
 ---
 
-*01-29-2018 Updates: it is important but missed in the original post that the choice of k in the kmer should be a positive odd integer. The even integer may not be used to avoid producing reverse complementary sequence exactly the same as the original kmer, which will fold back the eulerian path to the kmer itself in the de Bruijn graph assembly. For example, 'GCGC' will have the same 'GCGC' as reverse complementary sequence. An odd kmer cannot be aligned with its own reverse complementary sequence [5,6].*
+*01-29-2018 Updates: it is important but missed in the original post that the choice of k in the kmer should be a positive odd integer. The even integer may not be used to avoid producing reverse complementary sequence exactly the same as the original kmer, which will fold back the eulerian path to the kmer itself in the de Bruijn graph assembly. For example, 'GCGC' will have the same 'GCGC' as reverse complementary sequence. An odd kmer cannot be aligned with its own reverse complementary sequence [5,6]. In real world sequencing with NGS technology, a sequence library could contain reverse complementary sequences.*
    
     
    
