@@ -151,7 +151,7 @@ Create/query the index can be a bit tricky here:
 After indexed the tables and optimized the SQL queries, the same single variant lookup with three SQL queries can be returned in <0.005 s on my 2-year-old laptop. So it takes ~10 seconds to finish more than 1000 variant lookup sessions, which would otherwise use more than 3 hours. 
 
 ### Wrap up the project and retro
-At last, docker helped to simplified the deployment (again), since the whole job can be run on a single docker container with python (pandas lib etc) and SQLite database pre-installed in the image. The to-be-imported datafile will be first exported from knowledge base or other sources to a folder that is mounted and readable to the virtual machine/docker container. Dockerizing this project is similar to the manual process to build the NGS pipeline with docker (so not an explicit point by this article).
+At last, while dockerizing this project is not an explicit point by this article, docker helped to simplified the deployment, since the whole job can be run on a single docker container with python (pandas lib etc) and SQLite database pre-installed in the image. The to-be-imported datafile will be first exported from knowledge base or other sources to a folder that is mounted and readable to the virtual machine/docker container. 
 
 The overall process can be done by ~10 minutes for data parsing and uploading ~2.5GB data files, and ~2 minutes for queries, with ~10K test cases (writing to VCFs etc) -- well, besides whatever upstream knowledge base query time and the docker initialization.
 
